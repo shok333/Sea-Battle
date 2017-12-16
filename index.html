@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="game.css">
+    <link rel="stylesheet" href="menu.css">
+    <title>Title</title>
+</head>
+<body>
+    <main>
+        <div class="panel">
+            <button data-size="1">1 палубный</button>
+            <button data-size="2">2 палубный</button>
+            <button data-size="3">3 палубный</button>
+            <button data-size="4">4 палубный</button>
+        </div>
+        <div class="battlefield player-battlefield">
+            <table>
+                <tr>
+                    <th></th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                    <th>8</th>
+                    <th>9</th>
+                    <th>10</th>
+                </tr>
+                <tr>
+                    <th>1</th>
+                    <td>
+                        <button data-x="1" data-y="1"></button>
+                    </td>
+                    <td>
+                        <button data-x="2" data-y="1"></button>
+                    </td>
+                    <td>
+                        <button data-x="3" data-y="1"></button>
+                    </td>
+                    <td>
+                        <button data-x="4" data-y="1"></button>
+                    </td>
+                    <td>
+                        <button data-x="5" data-y="1"></button>
+                    </td>
+                    <td>
+                        <button data-x="6" data-y="1"></button>
+                    </td>
+                    <td>
+                        <button data-x="7" data-y="1"></button>
+                    </td>
+                    <td>
+                        <button data-x="8" data-y="1"></button>
+                    </td>
+                    <td>
+                        <button data-x="9" data-y="1"></button>
+                    </td>
+                    <td>
+                        <button data-x="10" data-y="1"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <td>
+                        <button data-x="1" data-y="2"></button>
+                    </td>
+                    <td>
+                        <button data-x="2" data-y="2"></button>
+                    </td>
+                    <td>
+                        <button data-x="3" data-y="2"></button>
+                    </td>
+                    <td>
+                        <button data-x="4" data-y="2"></button>
+                    </td>
+                    <td>
+                        <button data-x="5" data-y="2"></button>
+                    </td>
+                    <td>
+                        <button data-x="6" data-y="2"></button>
+                    </td>
+                    <td>
+                        <button data-x="7" data-y="2"></button>
+                    </td>
+                    <td>
+                        <button data-x="8" data-y="2"></button>
+                    </td>
+                    <td>
+                        <button data-x="9" data-y="2"></button>
+                    </td>
+                    <td>
+                        <button data-x="10" data-y="2"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>3</th>
+                    <td>
+                        <button data-x="1" data-y="3"></button>
+                    </td>
+                    <td>
+                        <button data-x="2" data-y="3"></button>
+                    </td>
+                    <td>
+                        <button data-x="3" data-y="3"></button>
+                    </td>
+                    <td>
+                        <button data-x="4" data-y="3"></button>
+                    </td>
+                    <td>
+                        <button data-x="5" data-y="3"></button>
+                    </td>
+                    <td>
+                        <button data-x="6" data-y="3"></button>
+                    </td>
+                    <td>
+                        <button data-x="7" data-y="3"></button>
+                    </td>
+                    <td>
+                        <button data-x="8" data-y="3"></button>
+                    </td>
+                    <td>
+                        <button data-x="9" data-y="3"></button>
+                    </td>
+                    <td>
+                        <button data-x="10" data-y="3"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>4</th>
+                    <td>
+                        <button data-x="1" data-y="4"></button>
+                    </td>
+                    <td>
+                        <button data-x="2" data-y="4"></button>
+                    </td>
+                    <td>
+                        <button data-x="3" data-y="4"></button>
+                    </td>
+                    <td>
+                        <button data-x="4" data-y="4"></button>
+                    </td>
+                    <td>
+                        <button data-x="5" data-y="4"></button>
+                    </td>
+                    <td>
+                        <button data-x="6" data-y="4"></button>
+                    </td>
+                    <td>
+                        <button data-x="7" data-y="4"></button>
+                    </td>
+                    <td>
+                        <button data-x="8" data-y="4"></button>
+                    </td>
+                    <td>
+                        <button data-x="9" data-y="4"></button>
+                    </td>
+                    <td>
+                        <button data-x="10" data-y="4"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>5</th>
+                    <td>
+                        <button data-x="1" data-y="5"></button>
+                    </td>
+                    <td>
+                        <button data-x="2" data-y="5"></button>
+                    </td>
+                    <td>
+                        <button data-x="3" data-y="5"></button>
+                    </td>
+                    <td>
+                        <button data-x="4" data-y="5"></button>
+                    </td>
+                    <td>
+                        <button data-x="5" data-y="5"></button>
+                    </td>
+                    <td>
+                        <button data-x="6" data-y="5"></button>
+                    </td>
+                    <td>
+                        <button data-x="7" data-y="5"></button>
+                    </td>
+                    <td>
+                        <button data-x="8" data-y="5"></button>
+                    </td>
+                    <td>
+                        <button data-x="9" data-y="5"></button>
+                    </td>
+                    <td>
+                        <button data-x="10" data-y="5"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>6</th>
+                    <td>
+                        <button data-x="1" data-y="6"></button>
+                    </td>
+                    <td>
+                        <button data-x="2" data-y="6"></button>
+                    </td>
+                    <td>
+                        <button data-x="3" data-y="6"></button>
+                    </td>
+                    <td>
+                        <button data-x="4" data-y="6"></button>
+                    </td>
+                    <td>
+                        <button data-x="5" data-y="6"></button>
+                    </td>
+                    <td>
+                        <button data-x="6" data-y="6"></button>
+                    </td>
+                    <td>
+                        <button data-x="7" data-y="6"></button>
+                    </td>
+                    <td>
+                        <button data-x="8" data-y="6"></button>
+                    </td>
+                    <td>
+                        <button data-x="9" data-y="6"></button>
+                    </td>
+                    <td>
+                        <button data-x="10" data-y="6"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>7</th>
+                    <td>
+                        <button data-x="1" data-y="7"></button>
+                    </td>
+                    <td>
+                        <button data-x="2" data-y="7"></button>
+                    </td>
+                    <td>
+                        <button data-x="3" data-y="7"></button>
+                    </td>
+                    <td>
+                        <button data-x="4" data-y="7"></button>
+                    </td>
+                    <td>
+                        <button data-x="5" data-y="7"></button>
+                    </td>
+                    <td>
+                        <button data-x="6" data-y="7"></button>
+                    </td>
+                    <td>
+                        <button data-x="7" data-y="7"></button>
+                    </td>
+                    <td>
+                        <button data-x="8" data-y="7"></button>
+                    </td>
+                    <td>
+                        <button data-x="9" data-y="7"></button>
+                    </td>
+                    <td>
+                        <button data-x="10" data-y="7"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>8</th>
+                    <td>
+                        <button data-x="1" data-y="8"></button>
+                    </td>
+                    <td>
+                        <button data-x="2" data-y="8"></button>
+                    </td>
+                    <td>
+                        <button data-x="3" data-y="8"></button>
+                    </td>
+                    <td>
+                        <button data-x="4" data-y="8"></button>
+                    </td>
+                    <td>
+                        <button data-x="5" data-y="8"></button>
+                    </td>
+                    <td>
+                        <button data-x="6" data-y="8"></button>
+                    </td>
+                    <td>
+                        <button data-x="7" data-y="8"></button>
+                    </td>
+                    <td>
+                        <button data-x="8" data-y="8"></button>
+                    </td>
+                    <td>
+                        <button data-x="9" data-y="8"></button>
+                    </td>
+                    <td>
+                        <button data-x="10" data-y="8"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>9</th>
+                    <td>
+                        <button data-x="1" data-y="9"></button>
+                    </td>
+                    <td>
+                        <button data-x="2" data-y="9"></button>
+                    </td>
+                    <td>
+                        <button data-x="3" data-y="9"></button>
+                    </td>
+                    <td>
+                        <button data-x="4" data-y="9"></button>
+                    </td>
+                    <td>
+                        <button data-x="5" data-y="9"></button>
+                    </td>
+                    <td>
+                        <button data-x="6" data-y="9"></button>
+                    </td>
+                    <td>
+                        <button data-x="7" data-y="9"></button>
+                    </td>
+                    <td>
+                        <button data-x="8" data-y="9"></button>
+                    </td>
+                    <td>
+                        <button data-x="9" data-y="9"></button>
+                    </td>
+                    <td>
+                        <button data-x="10" data-y="9"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>10</th>
+                    <td>
+                        <button data-x="1" data-y="10"></button>
+                    </td>
+                    <td>
+                        <button data-x="2" data-y="10"></button>
+                    </td>
+                    <td>
+                        <button data-x="3" data-y="10"></button>
+                    </td>
+                    <td>
+                        <button data-x="4" data-y="10"></button>
+                    </td>
+                    <td>
+                        <button data-x="5" data-y="10"></button>
+                    </td>
+                    <td>
+                        <button data-x="6" data-y="10"></button>
+                    </td>
+                    <td>
+                        <button data-x="7" data-y="10"></button>
+                    </td>
+                    <td>
+                        <button data-x="8" data-y="10"></button>
+                    </td>
+                    <td>
+                        <button data-x="9" data-y="10"></button>
+                    </td>
+                    <td>
+                        <button data-x="10" data-y="10"></button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </main>
+    <script
+            src="http://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+</html>

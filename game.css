@@ -51,6 +51,9 @@ main{
     height: 8vw;
     background-color: red;
 }
+.ship-placed{
+    background-color: gold;
+}
 @media (max-height: 100vw) {
     main{
         background-color: red;

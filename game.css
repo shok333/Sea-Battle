@@ -54,6 +54,15 @@ main{
 .ship-placed{
     background-color: gold;
 }
+.blunder{
+    background-color: darkslategray;
+}
+.ship-shooted{
+    background-color: pink;
+}
+.ship-killed{
+    background-color: red;
+}
 @media (max-height: 100vw) {
     main{
         background-color: red;

@@ -4,6 +4,7 @@ function Battlefield() {
     // 1 - свободная проверенная ячейка - промах,
     // 2 - занятая ячейка
     // 3 - занятая подбитая ячейка - попадание
+    // 4 - убил
 }
 
 Battlefield.prototype.createMatrix = function() {

@@ -39,11 +39,7 @@ function ComputerBattlefield() {
     }).bind(this))
 
     addComputerShips.call(this);
-    function random (min, max) {
-        var rand = min - 0.5 + Math.random() * (max - min + 1)
-        rand = Math.round(rand);
-        return rand;
-    }
+
 
     function addComputerShips () {
         var ships = [4, 3, 3, 2, 2, 2, 1, 1, 1, 1];
@@ -67,7 +63,7 @@ function ComputerBattlefield() {
     function addComputerShip (shipSize) {
         var uncorrectlyPositions = [];
         var positionHasFound = false;
-        if(random(0,1)){
+        if(this.random(0,1)){
             var shipPosition = 'horizontal';
         }
         else {
@@ -77,8 +73,8 @@ function ComputerBattlefield() {
            while (!positionHasFound){
                var response = [];
                var correctlyPosition = true;
-               var x = random(0, 10 - shipSize);
-               var y = random(0,9);
+               var x = this.random(0, 10 - shipSize);
+               var y = this.random(0,9);
 
                uncorrectlyPositions.forEach(function (item) {
                   if(item.x === x && item.y === y){
@@ -117,8 +113,8 @@ function ComputerBattlefield() {
             while (!positionHasFound){
                 var response = [];
                 var correctlyPosition = true;
-                var y = random(0, 10 - shipSize);
-                var x = random(0,9);
+                var y = this.random(0, 10 - shipSize);
+                var x = this.random(0,9);
 
                 uncorrectlyPositions.forEach(function (item) {
                     if(item.x === x && item.y === y){

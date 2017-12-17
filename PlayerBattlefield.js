@@ -6,10 +6,141 @@ function PlayerBattlefield(battlefield) {
         4: 1,
     };
 
-
     var shipTypesPanel = document.querySelector('.ship-types');
 
+
     this.matrix = this.createMatrix();
+    this.shootedElements = [];
+    document.querySelector('#start-game').addEventListener('click', (function () {
+        setInterval((function () {
+            if(this.shootedElements.length > 0){
+                if(this.shootedElements.length === 1){
+                    var siblingElements = [];
+                    var x = this.shootedElements[0].x;
+                    var y = this.shootedElements[0].y;
+                    if(x + 1 < 10){
+                        if(this.matrix[x + 1][y] === 0 || this.matrix[x + 1][y] === 2){
+                            siblingElements.push({x: x + 1, y: y});
+                        }
+                    }
+                    if(x - 1 >= 0){
+                        if(this.matrix[x - 1][y] === 0 || this.matrix[x - 1][y] === 2){
+                            siblingElements.push({x: x - 1, y: y});
+                        }
+                    }
+                    if(x + 1 < 10){
+                        if(this.matrix[x][y + 1] === 0 || this.matrix[x][y + 1] === 2){
+                            siblingElements.push({x: x, y: y + 1});
+                        }
+                    }
+                    if(x - 1 >= 0){
+                        if(this.matrix[x][y - 1] === 0 || this.matrix[x][y - 1] === 2){
+                            siblingElements.push({x: x, y: y - 1});
+                        }
+                    }
+                    console.log(siblingElements);
+                    var selectedItem = siblingElements[this.random(0, siblingElements.length - 1)];
+
+                    if(this.matrix[selectedItem.x][selectedItem.y] === 2){
+
+                        var shipElements = [];
+                        this.findNextShipsItems.call(this, selectedItem.x, selectedItem.y, shipElements);
+                        shipElements = shipElements.filter((function (item) {
+                            if(this.matrix[item.x][item.y] === 2){
+                                return true;
+                            }
+                            return false;
+                        }).bind(this));
+
+
+                        if(shipElements.length === 1){
+                            this.matrix[selectedItem.x][selectedItem.y] = 4;
+                            this.matrix[x][y] = 4;
+                            battlefield.querySelector('button[data-x="'+(selectedItem.x+1)+'"][data-y="'+(selectedItem.y+1)+'"]').classList.add('ship-killed');
+                            battlefield.querySelector('button[data-x="'+(x+1)+'"][data-y="'+(y+1)+'"]').classLgiyist.add('ship-killed');
+
+                            for ( var i = selectedItem.x - 1; i <= selectedItem.x + 1; i++) {
+                                for (var j = selectedItem.y - 1; j <= selectedItem.y + 1; j++) {
+                                    if (i >= 0 && j >= 0 && i <= 9 && j <= 9) {
+                                        if(this.matrix[i][j] !== 4){
+                                            this.matrix[i][j] = 1;
+                                            battlefield.querySelector('button[data-x="'+(i+1)+'"][data-y="'+(j+1)+'"]').classList.add('blunder');
+                                        }
+                                    }
+                                }
+                            }
+                            for ( var i = x - 1; i <= x + 1; i++) {
+                                for (var j = y - 1; j <= y + 1; j++) {
+                                    if (i >= 0 && j >= 0 && i <= 9 && j <= 9) {
+                                        if(this.matrix[i][j] !== 4){
+                                            this.matrix[i][j] = 1;
+                                            battlefield.querySelector('button[data-x="'+(i+1)+'"][data-y="'+(j+1)+'"]').classList.add('blunder');
+                                        }
+                                    }
+                                }
+                            }
+
+                            this.shootedElements = [];
+                            return;
+                        }
+                        else {
+                            this.shootedElements.push(selectedItem);
+                            battlefield.querySelector('button[data-x="'+(selectedItem.x+1)+'"][data-y="'+(selectedItem.y+1)+'"]').classList.add('ship-shooted');
+                            return;
+                        }
+                    }
+                    else {
+                        battlefield.querySelector('button[data-x="'+(selectedItem.x+1)+'"][data-y="'+(selectedItem.y+1)+'"]').classList.add('blunder');
+                        this.matrix[selectedItem.x][selectedItem.y] = 1;
+                        return;
+                    }
+                }
+                else {
+                    console.log('else');
+                }
+            }
+
+
+            var elementForSelect = [];
+            for(var i = 0; i < 10; i++){
+                for(var j = 0; j < 10; j++){
+                    if(this.matrix[i][j] !== 1 && this.matrix[i][j] !== 3 && this.matrix[i][j] !== 4){
+                        elementForSelect.push({x: i, y: j});
+                    }
+                }
+            }
+            var item = elementForSelect[this.random(0,elementForSelect.length -1)];
+            if(this.matrix[item.x][item.y] === 0){
+                this.matrix[item.x][item.y] = 1;
+                battlefield.querySelector('button[data-x="'+(item.x+1)+'"][data-y="'+(item.y+1)+'"]').classList.add('blunder');
+            }
+            else {
+                var shipElements = []
+                this.findNextShipsItems.call(this, item.x, item.y, shipElements);
+                if(shipElements.length === 0){
+                    this.matrix[item.x][item.y] = 4;
+                    battlefield.querySelector('button[data-x="'+(item.x+1)+'"][data-y="'+(item.y+1)+'"]').classList.add('ship-killed');
+                    for ( var i = item.x - 1; i <= item.x + 1; i++) {
+                        for (var j = item.y - 1; j <= item.y + 1; j++) {
+                            if (i >= 0 && j >= 0 && i <= 9 && j <= 9) {
+                                console.log(2);
+                                this.matrix[i][j] = 1;
+                                battlefield.querySelector('button[data-x="'+(i+1)+'"][data-y="'+(j+1)+'"]').classList.add('blunder');
+                            }
+                        }
+                    }
+                }
+                else {
+                    this.shootedElements.push(item);
+                    battlefield.querySelector('button[data-x="'+(item.x+1)+'"][data-y="'+(item.y+1)+'"]').classList.add('ship-shooted');
+                }
+
+            }
+        }).bind(this),500);
+    }).bind(this));
+
+
+
 
     document.querySelector('#turn-ship').addEventListener('click', turnShip.bind(this));
 

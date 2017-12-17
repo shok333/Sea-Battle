@@ -5,7 +5,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Battlefield.js" afterPath="$PROJECT_DIR$/Battlefield.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ComputerBattlefield.js" afterPath="$PROJECT_DIR$/ComputerBattlefield.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.css" afterPath="$PROJECT_DIR$/game.css" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -39,21 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerBattlefield.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PlayerBattlefield.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="167" column="8" lean-forward="false" selection-start-line="167" selection-start-column="8" selection-end-line="167" selection-end-column="74" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Battlefield.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Battlefield.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="24" lean-forward="false" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="24" />
+            <state relative-caret-position="515">
+              <caret line="107" column="24" lean-forward="true" selection-start-line="107" selection-start-column="24" selection-end-line="107" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -62,8 +51,8 @@
       <file leaf-file-name="ComputerBattlefield.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ComputerBattlefield.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="58">
-              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+            <state relative-caret-position="102">
+              <caret line="6" column="45" lean-forward="false" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -72,7 +61,7 @@
       <file leaf-file-name="game.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/game.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
+            <state relative-caret-position="517">
               <caret line="59" column="13" lean-forward="false" selection-start-line="59" selection-start-column="1" selection-end-line="59" selection-end-column="13" />
               <folding />
             </state>
@@ -101,7 +90,6 @@
       <find>addShip</find>
       <find>shipCount</find>
       <find>disableShipTypeButtons</find>
-      <find>correctlyPlace</find>
       <find>func</find>
       <find>shipSize</find>
       <find>showShipOnButtlefield</find>
@@ -115,6 +103,7 @@
       <find>matr</find>
       <find>class</find>
       <find>querySelector</find>
+      <find>correctlyPlace</find>
       <find>log</find>
     </findStrings>
   </component>
@@ -129,9 +118,9 @@
         <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/PlayerBattlefield.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/Battlefield.js" />
         <option value="$PROJECT_DIR$/game.css" />
         <option value="$PROJECT_DIR$/ComputerBattlefield.js" />
+        <option value="$PROJECT_DIR$/Battlefield.js" />
       </list>
     </option>
   </component>
@@ -235,12 +224,12 @@
       <workItem from="1513418680177" duration="18220000" />
       <workItem from="1513487930777" duration="4626000" />
       <workItem from="1513495484488" duration="15025000" />
-      <workItem from="1513512665634" duration="2843000" />
+      <workItem from="1513512665634" duration="4958000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62032000" />
+    <option name="totallyTimeSpent" value="64147000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-10" y="0" width="1905" height="1040" extended-state="0" />
@@ -248,11 +237,11 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33529726" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32819384" sideWeight="0.5083021" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5083021" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32929516" sideWeight="0.49812534" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32819384" sideWeight="0.4916979" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.4916979" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -466,14 +455,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="56" lean-forward="false" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -482,17 +463,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ComputerBattlefield.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/game.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
+        <state relative-caret-position="517">
           <caret line="59" column="13" lean-forward="false" selection-start-line="59" selection-start-column="1" selection-end-line="59" selection-end-column="13" />
           <folding />
         </state>
@@ -500,16 +473,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PlayerBattlefield.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
+        <state relative-caret-position="551">
           <caret line="167" column="8" lean-forward="false" selection-start-line="167" selection-start-column="8" selection-end-line="167" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="56" lean-forward="false" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ComputerBattlefield.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="45" lean-forward="false" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Battlefield.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="24" lean-forward="false" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="24" />
+        <state relative-caret-position="515">
+          <caret line="107" column="24" lean-forward="true" selection-start-line="107" selection-start-column="24" selection-end-line="107" selection-end-column="24" />
           <folding />
         </state>
       </provider>

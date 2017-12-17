@@ -23,50 +23,7 @@ function ComputerBattlefield() {
             else if(selectedItemValue === 2){
                 var shipElements = [];
                 this.matrix[x][y] = 3;
-                for(var i = x - 1; i <= x + 1; i++){
-                    for(var j = y - 1; j <= y + 1; j++){
-                        if(i >= 0 && j >= 0 && i < 10 && j < 10){
-                            if(this.matrix[i][j] === 2 || this.matrix[i][j] === 3){
-                                if(i === x && j < y){
-                                    var index = j;
-                                    while(this.matrix[x][index]===2 || this.matrix[x][index] === 3){
-                                        if(index>=0){
-                                            shipElements.push({value: this.matrix[x][index], x: x, y: index});
-                                            index--;
-                                        }
-                                    }
-                                }
-                                else if(i === x && j > y){
-                                    var index = j;
-                                    while(this.matrix[x][index]===2 || this.matrix[x][index] === 3){
-                                        if(index < 10){
-                                            shipElements.push({value: this.matrix[x][index], x: x, y: index});
-                                            index++;
-                                        }
-                                    }
-                                }
-                                else if(i < x && j === y){
-                                    var index = i;
-                                    while(this.matrix[index][y]===2 || this.matrix[index][y] === 3){
-                                        if(index >= 0) {
-                                            shipElements.push({value: this.matrix[index][y], x: index, y: y});
-                                            index--;
-                                        }
-                                    }
-                                }
-                                else if(i > x && j === y) {
-                                    var index = i;
-                                    while(this.matrix[index][y]===2 || this.matrix[index][y] === 3){
-                                        if(index < 10) {
-                                            shipElements.push({value: this.matrix[index][y], x: index, y: y});
-                                            index++;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                this.findNextShipsItems.call(this, x, y, shipElements);
                 for(var i = 0; i < shipElements.length; i++){
                     if(shipElements[i].value === 2){
                         event.target.classList.toggle('ship-shooted');

@@ -76,3 +76,60 @@ Battlefield.prototype.correctlyPlace = function (mousePosition) {
         return true;
     }
 }
+
+Battlefield.prototype.checkNextShipsItems = function (i, j, x, y, shipElements) {
+    if(i === x && j < y){
+        var index = j;
+        while(this.matrix[x][index]===2 || this.matrix[x][index] === 3){
+            shipElements.push({value: this.matrix[x][index], x: x, y: index});
+            index--;
+            if(index<0){
+                break;
+            }
+        }
+    }
+    else if(i === x && j > y){
+        var index = j;
+        while(this.matrix[x][index]===2 || this.matrix[x][index] === 3){
+            shipElements.push({value: this.matrix[x][index], x: x, y: index});
+            index++;
+            if(index>9){
+                break;
+            }
+        }
+    }
+    else if(i < x && j === y){
+        console.log(i+' '+j+ ' '+x+' '+y);
+        var index = i;
+        console.log(index);
+        while(this.matrix[index][y]===2 || this.matrix[index][y] === 3){
+            shipElements.push({value: this.matrix[index][y], x: index, y: y});
+            index--;
+            if(index<0){
+                break;
+            }
+        }
+    }
+    else if(i > x && j === y) {
+        var index = i;
+        while(this.matrix[index][y]===2 || this.matrix[index][y] === 3){
+            shipElements.push({value: this.matrix[index][y], x: index, y: y});
+            index++;
+            if(index>9){
+                break;
+            }
+        }
+    }
+}
+
+Battlefield.prototype.findNextShipsItems = function (x, y, shipElements) {
+    for(var i = x - 1; i <= x + 1; i++){
+        for(var j = y - 1; j <= y + 1; j++){
+            if(i >= 0 && j >= 0 && i < 10 && j < 10){
+                if(this.matrix[i][j] === 2 || this.matrix[i][j] === 3){
+                    this.checkNextShipsItems(i, j, x, y, shipElements);
+                }
+            }
+        }
+    }
+}

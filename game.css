@@ -9,13 +9,13 @@ main{
 
 .battlefield button{
     /*background-color: rgba(0,0,0,0);*/
-    width: 8vw;
-    height: 8vw;
+    width: 4vw;
+    height: 4vw;
     display: inline-block;
     border: none;
 }
-.battlefield th{
-    padding: 1vw;
+.battlefield th {
+    padding: 0;
 }
 .battlefield td{
     border: darkgray solid 1px;

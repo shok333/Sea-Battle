@@ -28,16 +28,17 @@ function PlayerBattlefield(battlefield) {
                             siblingElements.push({x: x - 1, y: y});
                         }
                     }
-                    if(x + 1 < 10){
+                    if(y + 1 < 10){
                         if(this.matrix[x][y + 1] === 0 || this.matrix[x][y + 1] === 2){
                             siblingElements.push({x: x, y: y + 1});
                         }
                     }
-                    if(x - 1 >= 0){
+                    if(y - 1 >= 0){
                         if(this.matrix[x][y - 1] === 0 || this.matrix[x][y - 1] === 2){
                             siblingElements.push({x: x, y: y - 1});
                         }
                     }
+                    console.log(x +' '+y);
                     console.log(siblingElements);
                     var selectedItem = siblingElements[this.random(0, siblingElements.length - 1)];
 
@@ -57,7 +58,7 @@ function PlayerBattlefield(battlefield) {
                             this.matrix[selectedItem.x][selectedItem.y] = 4;
                             this.matrix[x][y] = 4;
                             battlefield.querySelector('button[data-x="'+(selectedItem.x+1)+'"][data-y="'+(selectedItem.y+1)+'"]').classList.add('ship-killed');
-                            battlefield.querySelector('button[data-x="'+(x+1)+'"][data-y="'+(y+1)+'"]').classLgiyist.add('ship-killed');
+                            battlefield.querySelector('button[data-x="'+(x+1)+'"][data-y="'+(y+1)+'"]').classList.add('ship-killed');
 
                             for ( var i = selectedItem.x - 1; i <= selectedItem.x + 1; i++) {
                                 for (var j = selectedItem.y - 1; j <= selectedItem.y + 1; j++) {
@@ -136,7 +137,7 @@ function PlayerBattlefield(battlefield) {
                 }
 
             }
-        }).bind(this),500);
+        }).bind(this),100);
     }).bind(this));
 
 

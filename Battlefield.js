@@ -139,3 +139,5 @@ Battlefield.prototype.random = function (min, max) {
     rand = Math.round(rand);
     return rand;
 }
+
+Battlefield.computerStart = true;

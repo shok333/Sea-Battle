@@ -7,9 +7,9 @@ function PlayerBattlefield(battlefield) {
     };
 
     var shipTypesPanel = document.querySelector('.ship-types');
-
-
     this.matrix = this.createMatrix();
+    this.addShips.call(this, battlefield);
+
     this.shootedElements = [];
     document.querySelector('#start-game').addEventListener('click', (function () {
         setInterval((function () {

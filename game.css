@@ -1,4 +1,6 @@
 main{
+    /*background-image: url('sea.jpg');*/
+    background-color: rgba(255, 255, 255, 1);
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -8,7 +10,6 @@ main{
 }
 
 .battlefield button{
-    /*background-color: rgba(0,0,0,0);*/
     width: 4vw;
     height: 4vw;
     display: inline-block;
@@ -16,6 +17,7 @@ main{
 }
 .battlefield th {
     padding: 0;
+    background-color: white;
 }
 .battlefield td{
     border: darkgray solid 1px;
@@ -52,7 +54,7 @@ main{
     background-color: red;
 }
 .ship-placed{
-    background-color: gold;
+    background-color: darkgrey;
 }
 .blunder{
     background-color: darkslategray;
@@ -62,6 +64,42 @@ main{
 }
 .ship-killed{
     background-color: red;
+}
+#start-menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.85);
+    position: absolute;
+}
+#start-menu>div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: whitesmoke;
+    border-radius: 4px;
+    padding: 18px 25px;
+    border: 2px darkgrey solid;
+}
+#select-first-step-menu{
+    font-family: Arial sans-serif;
+    display: flex;
+    flex-direction: column;
+    font-size: 22px;
+}
+input[type=radio]{
+    margin: 0;
+    font-size: 26px;
+}
+#start-menu button{
+    width: 100%;
+    background-color: whitesmoke;
+    border: 2px darkgrey solid;
+    margin: 10px 0;
+    padding: 5px;
+    border-radius: 4px;
 }
 @media (max-height: 100vw) {
     main{

@@ -1,5 +1,4 @@
 main{
-    /*background-image: url('sea.jpg');*/
     background-color: rgba(255, 255, 255, 1);
     display: flex;
     align-items: center;
@@ -21,37 +20,6 @@ main{
 }
 .battlefield td{
     border: darkgray solid 1px;
-}
-.panel{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.panel button{
-    border: none;
-    border-radius: 4px;
-    background-color: darkgray;
-    padding: 5px;
-}
-.ship-1{
-    width: 8vw;
-    height: 8vw;
-    background-color: red;
-}
-.ship-2{
-    width: 16vw;
-    height: 8vw;
-    background-color: red;
-}
-.ship-3{
-    width: 24vw;
-    height: 8vw;
-    background-color: red;
-}
-.ship-4{
-    width: 32vw;
-    height: 8vw;
-    background-color: red;
 }
 .ship-placed{
     background-color: darkgrey;
@@ -93,13 +61,29 @@ input[type=radio]{
     margin: 0;
     font-size: 26px;
 }
-#start-menu button{
+#start-menu button, #win-panel button{
     width: 100%;
     background-color: whitesmoke;
     border: 2px darkgrey solid;
     margin: 10px 0;
     padding: 5px;
     border-radius: 4px;
+}
+#win-panel{
+    background-color: rgba(255, 255, 255, 0.85);
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+}
+#win-panel>div{
+    font-size: 22px;
+    background-color: whitesmoke;
+    border-radius: 4px;
+    padding: 18px 25px;
+    border: 2px darkgrey solid;
 }
 @media (max-height: 100vw) {
     main{

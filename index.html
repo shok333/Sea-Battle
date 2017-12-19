@@ -9,16 +9,6 @@
 </head>
 <body>
     <main>
-        <div class="panel">
-            <div class="ship-types">
-                <button data-size="1">1 палубный</button>
-                <button data-size="2">2 палубный</button>
-                <button data-size="3">3 палубный</button>
-                <button data-size="4">4 палубный</button>
-            </div>
-            <button id="turn-ship">Повернуть корабль</button>
-            <button id="start-game">Начать игру</button>
-        </div>
         <div class="battlefield player-battlefield">
             <table>
                 <tr>
@@ -730,11 +720,14 @@
                 <button id="hide-menu-and-start-game">Начать игру</button>
             </div>
         </div>
+        <div id="win-panel">
+            <div>
+                <h2>Player Win!</h2>
+                <button>Выйти в меню</button>
+            </div>
+        </div>
     </main>
-    <script
-            src="http://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
+    <script src="Game.js"></script>
     <script src="Battlefield.js"></script>
     <script src="PlayerBattlefield.js"></script>
     <script src="ComputerBattlefield.js"></script>

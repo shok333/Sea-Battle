@@ -1,4 +1,4 @@
-function ComputerBattlefield() {
+function ComputerBattlefield(game) {
     this.matrix = this.createMatrix();
     this.computerBattlefield = document.querySelector('.computer-battlefield');
 
@@ -45,7 +45,6 @@ function ComputerBattlefield() {
                             }
                         }
                     }
-                    Battlefield.computerStart = true;
                     shipElements.forEach((function (item) {
                         this.computerBattlefield.querySelector('button[data-x="'+(item.x+1)+'"][data-y="'+(item.y+1)+'"]').classList.add('ship-killed');
                         for (var i = item.x - 1; i <= item.x + 1; i++) {
@@ -59,6 +58,9 @@ function ComputerBattlefield() {
                             }
                         }
                     }).bind(this));
+                    game.subtractComputerShipsCount();
+                    game.checkEndOfGame();
+                    Battlefield.computerStart = true;
                 }
             }
         }

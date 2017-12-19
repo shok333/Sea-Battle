@@ -1,17 +1,11 @@
-function PlayerBattlefield(battlefield) {
-    this.shipCount = {
-        1: 4,
-        2: 3,
-        3: 2,
-        4: 1,
-    };
-
-    var shipTypesPanel = document.querySelector('.ship-types');
+function PlayerBattlefield(game) {
+    this.playerBattlefield = document.querySelector('.player-battlefield');
     this.matrix = this.createMatrix();
-    this.addShips.call(this, battlefield);
+
+    this.addShips.call(this, this.playerBattlefield);
 
     this.shootedElements = [];
-    document.querySelector('#start-game').addEventListener('click', (function () {
+    this.startGame = (function () {
         setInterval((function () {
             if(Battlefield.computerStart) {
                 if (this.shootedElements.length > 0) {
@@ -56,15 +50,15 @@ function PlayerBattlefield(battlefield) {
                             if (shipElements.length === 1) {
                                 this.matrix[selectedItem.x][selectedItem.y] = 4;
                                 this.matrix[x][y] = 4;
-                                battlefield.querySelector('button[data-x="' + (selectedItem.x + 1) + '"][data-y="' + (selectedItem.y + 1) + '"]').classList.add('ship-killed');
-                                battlefield.querySelector('button[data-x="' + (x + 1) + '"][data-y="' + (y + 1) + '"]').classList.add('ship-killed');
+                                this.playerBattlefield.querySelector('button[data-x="' + (selectedItem.x + 1) + '"][data-y="' + (selectedItem.y + 1) + '"]').classList.add('ship-killed');
+                                this.playerBattlefield.querySelector('button[data-x="' + (x + 1) + '"][data-y="' + (y + 1) + '"]').classList.add('ship-killed');
 
                                 for (var i = selectedItem.x - 1; i <= selectedItem.x + 1; i++) {
                                     for (var j = selectedItem.y - 1; j <= selectedItem.y + 1; j++) {
                                         if (i >= 0 && j >= 0 && i <= 9 && j <= 9) {
                                             if (this.matrix[i][j] !== 4) {
                                                 this.matrix[i][j] = 1;
-                                                battlefield.querySelector('button[data-x="' + (i + 1) + '"][data-y="' + (j + 1) + '"]').classList.add('blunder');
+                                                this.playerBattlefield.querySelector('button[data-x="' + (i + 1) + '"][data-y="' + (j + 1) + '"]').classList.add('blunder');
                                             }
                                         }
                                     }
@@ -74,24 +68,26 @@ function PlayerBattlefield(battlefield) {
                                         if (i >= 0 && j >= 0 && i <= 9 && j <= 9) {
                                             if (this.matrix[i][j] !== 4) {
                                                 this.matrix[i][j] = 1;
-                                                battlefield.querySelector('button[data-x="' + (i + 1) + '"][data-y="' + (j + 1) + '"]').classList.add('blunder');
+                                                this.playerBattlefield.querySelector('button[data-x="' + (i + 1) + '"][data-y="' + (j + 1) + '"]').classList.add('blunder');
                                             }
                                         }
                                     }
                                 }
 
                                 this.shootedElements = [];
+                                game.subtractPlayerShipsCount();
+                                game.checkEndOfGame();
                                 Battlefield.computerStart = false;
                                 return;
                             }
                             else {
                                 this.shootedElements.push(selectedItem);
-                                battlefield.querySelector('button[data-x="' + (selectedItem.x + 1) + '"][data-y="' + (selectedItem.y + 1) + '"]').classList.add('ship-shooted');
+                                this.playerBattlefield.querySelector('button[data-x="' + (selectedItem.x + 1) + '"][data-y="' + (selectedItem.y + 1) + '"]').classList.add('ship-shooted');
                                 return;
                             }
                         }
                         else {
-                            battlefield.querySelector('button[data-x="' + (selectedItem.x + 1) + '"][data-y="' + (selectedItem.y + 1) + '"]').classList.add('blunder');
+                            this.playerBattlefield.querySelector('button[data-x="' + (selectedItem.x + 1) + '"][data-y="' + (selectedItem.y + 1) + '"]').classList.add('blunder');
                             this.matrix[selectedItem.x][selectedItem.y] = 1;
                             Battlefield.computerStart = false;
                             return;
@@ -168,7 +164,7 @@ function PlayerBattlefield(battlefield) {
                             }
                         }
                         if (siblingElementsArray.length === 1) {
-                            battlefield.querySelector('button[data-x="' + (siblingElementsArray[0].x + 1) + '"][data-y="' + (siblingElementsArray[0].y + 1) + '"]').classList.add('ship-killed');
+                            this.playerBattlefield.querySelector('button[data-x="' + (siblingElementsArray[0].x + 1) + '"][data-y="' + (siblingElementsArray[0].y + 1) + '"]').classList.add('ship-killed');
                             this.matrix[siblingElementsArray[0].x][siblingElementsArray[0].y] = 4;
                             this.shootedElements = [];
                             var nextShipItems = [];
@@ -178,31 +174,32 @@ function PlayerBattlefield(battlefield) {
                                 for (var j = siblingElementsArray[0].y - 1; j <= siblingElementsArray[0].y + 1; j++) {
                                     if (i >= 0 && j >= 0 && i <= 9 && j <= 9) {
                                         this.matrix[i][j] = 1;
-                                        battlefield.querySelector('button[data-x="' + (i + 1) + '"][data-y="' + (j + 1) + '"]').classList.add('blunder');
+                                        this.playerBattlefield.querySelector('button[data-x="' + (i + 1) + '"][data-y="' + (j + 1) + '"]').classList.add('blunder');
                                     }
                                 }
                             }
 
                             nextShipItems.forEach((function (item) {
                                 this.matrix[item.x][item.y] = 4;
-                                battlefield.querySelector('button[data-x="' + (item.x + 1) + '"][data-y="' + (item.y + 1) + '"]').classList.add('ship-killed');
+                                this.playerBattlefield.querySelector('button[data-x="' + (item.x + 1) + '"][data-y="' + (item.y + 1) + '"]').classList.add('ship-killed');
                                 for (var i = item.x - 1; i <= item.x + 1; i++) {
                                     for (var j = item.y - 1; j <= item.y + 1; j++) {
                                         if (i >= 0 && j >= 0 && i <= 9 && j <= 9) {
                                             this.matrix[i][j] = 1;
-                                            battlefield.querySelector('button[data-x="' + (i + 1) + '"][data-y="' + (j + 1) + '"]').classList.add('blunder');
+                                            this.playerBattlefield.querySelector('button[data-x="' + (i + 1) + '"][data-y="' + (j + 1) + '"]').classList.add('blunder');
                                         }
                                     }
                                 }
                             }).bind(this));
-
+                            game.subtractPlayerShipsCount();
+                            game.checkEndOfGame();
                             Battlefield.computerStart = false;
                             return;
                         }
                         else if (siblingElementsArray.length === 2) {
                             if (this.random(0, 1) === 0) {
                                 if (this.matrix[siblingElementsArray[0].x][siblingElementsArray[0].y] === 2) {
-                                    battlefield.querySelector('button[data-x="' + (siblingElementsArray[0].x + 1) + '"][data-y="' + (siblingElementsArray[0].y + 1) + '"]').classList.add('ship-killed');
+                                    this.playerBattlefield.querySelector('button[data-x="' + (siblingElementsArray[0].x + 1) + '"][data-y="' + (siblingElementsArray[0].y + 1) + '"]').classList.add('ship-killed');
                                     this.matrix[siblingElementsArray[0].x][siblingElementsArray[0].y] = 3;
                                     this.shootedElements = [];
                                     var nextShipItems = [];
@@ -212,29 +209,30 @@ function PlayerBattlefield(battlefield) {
                                         for (var j = siblingElementsArray[0].y - 1; j <= siblingElementsArray[0].y + 1; j++) {
                                             if (i >= 0 && j >= 0 && i <= 9 && j <= 9) {
                                                 this.matrix[i][j] = 1;
-                                                battlefield.querySelector('button[data-x="' + (i + 1) + '"][data-y="' + (j + 1) + '"]').classList.add('blunder');
+                                                this.playerBattlefield.querySelector('button[data-x="' + (i + 1) + '"][data-y="' + (j + 1) + '"]').classList.add('blunder');
                                             }
                                         }
                                     }
 
                                     nextShipItems.forEach((function (item) {
                                         this.matrix[item.x][item.y] = 4;
-                                        battlefield.querySelector('button[data-x="' + (item.x + 1) + '"][data-y="' + (item.y + 1) + '"]').classList.add('ship-killed');
+                                        this.playerBattlefield.querySelector('button[data-x="' + (item.x + 1) + '"][data-y="' + (item.y + 1) + '"]').classList.add('ship-killed');
                                         for (var i = item.x - 1; i <= item.x + 1; i++) {
                                             for (var j = item.y - 1; j <= item.y + 1; j++) {
                                                 if (i >= 0 && j >= 0 && i <= 9 && j <= 9) {
                                                     this.matrix[i][j] = 1;
-                                                    battlefield.querySelector('button[data-x="' + (i + 1) + '"][data-y="' + (j + 1) + '"]').classList.add('blunder');
+                                                    this.playerBattlefield.querySelector('button[data-x="' + (i + 1) + '"][data-y="' + (j + 1) + '"]').classList.add('blunder');
                                                 }
                                             }
                                         }
                                     }).bind(this));
-
+                                    game.subtractPlayerShipsCount();
+                                    game.checkEndOfGame();
                                     Battlefield.computerStart = false;
                                     return;
                                 }
                                 else {
-                                    battlefield.querySelector('button[data-x="' + (siblingElementsArray[0].x + 1) + '"][data-y="' + (siblingElementsArray[0].y + 1) + '"]').classList.add('blunder');
+                                    this.playerBattlefield.querySelector('button[data-x="' + (siblingElementsArray[0].x + 1) + '"][data-y="' + (siblingElementsArray[0].y + 1) + '"]').classList.add('blunder');
                                     this.matrix[siblingElementsArray[0].x][siblingElementsArray[0].y] = 1;
                                     Battlefield.computerStart = false;
                                     return;
@@ -242,7 +240,7 @@ function PlayerBattlefield(battlefield) {
                             }
                             else {
                                 if (this.matrix[siblingElementsArray[1].x][siblingElementsArray[1].y] === 2) {
-                                    battlefield.querySelector('button[data-x="' + (siblingElementsArray[1].x + 1) + '"][data-y="' + (siblingElementsArray[1].y + 1) + '"]').classList.add('ship-killed');
+                                    this.playerBattlefield.querySelector('button[data-x="' + (siblingElementsArray[1].x + 1) + '"][data-y="' + (siblingElementsArray[1].y + 1) + '"]').classList.add('ship-killed');
                                     this.matrix[siblingElementsArray[1].x][siblingElementsArray[1].y] = 3;
                                     this.shootedElements = [];
                                     var nextShipItems = [];
@@ -252,28 +250,30 @@ function PlayerBattlefield(battlefield) {
                                         for (var j = siblingElementsArray[1].y - 1; j <= siblingElementsArray[1].y + 1; j++) {
                                             if (i >= 0 && j >= 0 && i <= 9 && j <= 9) {
                                                 this.matrix[i][j] = 1;
-                                                battlefield.querySelector('button[data-x="' + (i + 1) + '"][data-y="' + (j + 1) + '"]').classList.add('blunder');
+                                                this.playerBattlefield.querySelector('button[data-x="' + (i + 1) + '"][data-y="' + (j + 1) + '"]').classList.add('blunder');
                                             }
                                         }
                                     }
 
                                     nextShipItems.forEach((function (item) {
                                         this.matrix[item.x][item.y] = 4;
-                                        battlefield.querySelector('button[data-x="' + (item.x + 1) + '"][data-y="' + (item.y + 1) + '"]').classList.add('ship-killed');
+                                        this.playerBattlefield.querySelector('button[data-x="' + (item.x + 1) + '"][data-y="' + (item.y + 1) + '"]').classList.add('ship-killed');
                                         for (var i = item.x - 1; i <= item.x + 1; i++) {
                                             for (var j = item.y - 1; j <= item.y + 1; j++) {
                                                 if (i >= 0 && j >= 0 && i <= 9 && j <= 9) {
                                                     this.matrix[i][j] = 1;
-                                                    battlefield.querySelector('button[data-x="' + (i + 1) + '"][data-y="' + (j + 1) + '"]').classList.add('blunder');
+                                                    this.playerBattlefield.querySelector('button[data-x="' + (i + 1) + '"][data-y="' + (j + 1) + '"]').classList.add('blunder');
                                                 }
                                             }
                                         }
                                     }).bind(this));
+                                    game.subtractPlayerShipsCount();
+                                    game.checkEndOfGame();
                                     Battlefield.computerStart = false;
                                     return;
                                 }
                                 else {
-                                    battlefield.querySelector('button[data-x="' + (siblingElementsArray[1].x + 1) + '"][data-y="' + (siblingElementsArray[1].y + 1) + '"]').classList.add('blunder');
+                                    this.playerBattlefield.querySelector('button[data-x="' + (siblingElementsArray[1].x + 1) + '"][data-y="' + (siblingElementsArray[1].y + 1) + '"]').classList.add('blunder');
                                     this.matrix[siblingElementsArray[1].x][siblingElementsArray[1].y] = 1;
                                     Battlefield.computerStart = false;
                                     return;
@@ -295,7 +295,7 @@ function PlayerBattlefield(battlefield) {
                 var item = elementForSelect[this.random(0, elementForSelect.length - 1)];
                 if (this.matrix[item.x][item.y] === 0) {
                     this.matrix[item.x][item.y] = 1;
-                    battlefield.querySelector('button[data-x="' + (item.x + 1) + '"][data-y="' + (item.y + 1) + '"]').classList.add('blunder');
+                    this.playerBattlefield.querySelector('button[data-x="' + (item.x + 1) + '"][data-y="' + (item.y + 1) + '"]').classList.add('blunder');
                     Battlefield.computerStart = false;
                 }
                 else {
@@ -303,195 +303,28 @@ function PlayerBattlefield(battlefield) {
                     this.findNextShipsItems.call(this, item.x, item.y, shipElements);
                     if (shipElements.length === 0) {
                         this.matrix[item.x][item.y] = 4;
-                        battlefield.querySelector('button[data-x="' + (item.x + 1) + '"][data-y="' + (item.y + 1) + '"]').classList.add('ship-killed');
+                        this.playerBattlefield.querySelector('button[data-x="' + (item.x + 1) + '"][data-y="' + (item.y + 1) + '"]').classList.add('ship-killed');
                         for (var i = item.x - 1; i <= item.x + 1; i++) {
                             for (var j = item.y - 1; j <= item.y + 1; j++) {
                                 if (i >= 0 && j >= 0 && i <= 9 && j <= 9) {
                                     this.matrix[i][j] = 1;
-                                    battlefield.querySelector('button[data-x="' + (i + 1) + '"][data-y="' + (j + 1) + '"]').classList.add('blunder');
+                                    this.playerBattlefield.querySelector('button[data-x="' + (i + 1) + '"][data-y="' + (j + 1) + '"]').classList.add('blunder');
                                 }
                             }
                         }
+                        game.subtractPlayerShipsCount();
+                        game.checkEndOfGame();
                         Battlefield.computerStart = false;
                     }
                     else {
                         this.shootedElements.push(item);
-                        battlefield.querySelector('button[data-x="' + (item.x + 1) + '"][data-y="' + (item.y + 1) + '"]').classList.add('ship-shooted');
+                        this.playerBattlefield.querySelector('button[data-x="' + (item.x + 1) + '"][data-y="' + (item.y + 1) + '"]').classList.add('ship-shooted');
                     }
 
                 }
             }
         }).bind(this),100);
 
-    }).bind(this));
-
-
-
-
-    document.querySelector('#turn-ship').addEventListener('click', turnShip.bind(this));
-
-    function selectShipSize(event) {
-        this.shipSize = +(event.target.dataset.size);
-    }
-
-    function turnShip() {
-        if(this.shipPosition === 'horizontal'){
-            this.shipPosition = 'vertical';
-        }
-        else {
-            this.shipPosition = 'horizontal';
-        }
-    }
-
-    shipTypesPanel.addEventListener('click',selectShipSize.bind(this));
-
-
-
-    function getShipPosition (event) {
-        var mousePosition = { x: +event.target.dataset.x, y: +event.target.dataset.y };
-        var correctlyPositionResponse = this.correctlyPlace(mousePosition);
-        var shipPositionElements = [];
-        var shipElement = {x: null, y: null};
-        if(this.shipPosition === 'horizontal'){
-            if(this.shipSize > 2){
-                var leftShiftElement = {x: mousePosition.x - 1, y: mousePosition.y};
-                if(0 < leftShiftElement.x){
-                    shipPositionElements.push({ x:leftShiftElement.x, y: leftShiftElement.y });
-                }
-
-                for(var i = 0; i < this.shipSize-1; i++){
-                    shipElement = {x: mousePosition.x + i, y: mousePosition.y};
-                    if(shipElement.x <= 10){
-                        shipPositionElements.push({ x:shipElement.x, y: shipElement.y });
-                    }
-                }
-            }
-            else {
-                for(var i = 0; i < this.shipSize; i++){
-                    shipElement = {x: mousePosition.x + i, y: mousePosition.y};
-                    if(0 < shipElement.x &&shipElement.x <= 10){
-                        shipPositionElements.push({ x:shipElement.x, y: shipElement.y });
-                    }
-                }
-            }
-        }
-        else {
-            if(this.shipSize > 2){
-                var leftShiftElement = {x: mousePosition.x, y: mousePosition.y - 1};
-                if(0 < leftShiftElement.y){
-                    shipPositionElements.push({ x:leftShiftElement.x, y: leftShiftElement.y });
-                }
-
-                for(var i = 0; i < this.shipSize-1; i++){
-                    shipElement = {x: mousePosition.x, y: mousePosition.y + i};
-                    if(shipElement.y <= 10){
-                        shipPositionElements.push({ x:shipElement.x, y: shipElement.y });
-                    }
-                }
-            }
-            else {
-                for(var i = 0; i < this.shipSize; i++){
-                    shipElement = {x: mousePosition.x, y: mousePosition.y + i};
-                    if(0 < shipElement.y &&shipElement.y <= 10){
-                        shipPositionElements.push({ x:shipElement.x, y: shipElement.y });
-                    }
-                }
-            }
-        }
-        if(!this.positionIsEmpty(shipPositionElements)){
-            correctlyPositionResponse = false;
-        }
-        return { shipPositionElements: shipPositionElements, correctlyPositionResponse: correctlyPositionResponse};
-    }
-
-    function selectShipPositionMouseOut (event) {
-        if(event.target.tagName.toUpperCase() === 'button'.toUpperCase()) {
-            var mousePosition = {x: +event.target.dataset.x, y: +event.target.dataset.y};
-            if (this.shipPosition === 'horizontal') {
-                var leftShiftElement = {x: mousePosition.x - 1, y: mousePosition.y};
-                if(0 < leftShiftElement.x){
-                    document.querySelector("button[data-x='"+leftShiftElement.x+"'][data-y='"+leftShiftElement.y+"']").style.backgroundColor = null;
-                }
-
-                for (var i = 0; i < this.shipSize; i++) {
-                    shipElement = {x: mousePosition.x + i, y: mousePosition.y};
-                    if(0 <= shipElement.x &&shipElement.x <= 10) {
-                        document.querySelector("button[data-x='" + shipElement.x + "'][data-y='" + shipElement.y + "']").style.backgroundColor = null;
-                    }
-                }
-            }
-            else {
-                var leftShiftElement = {x: mousePosition.x, y: mousePosition.y - 1};
-                if(0 < leftShiftElement.y){
-                    document.querySelector("button[data-x='"+leftShiftElement.x+"'][data-y='"+leftShiftElement.y+"']").style.backgroundColor = null;
-                }
-
-                for (var i = 0; i < this.shipSize; i++) {
-                    shipElement = {x: mousePosition.x, y: mousePosition.y + i};
-                    if(0 <= shipElement.y &&shipElement.y <= 10) {
-                        document.querySelector("button[data-x='" + shipElement.x + "'][data-y='" + shipElement.y + "']").style.backgroundColor = null;
-                    }
-                }
-            }
-        }
-    }
-
-    function showShipOnBattlefield(shipPositionObject) {
-        if(shipPositionObject.correctlyPositionResponse){
-            var color = 'pink';
-        }
-        else {
-            var color = 'red';
-        }
-        shipPositionObject.shipPositionElements.forEach(function (item) {
-            document.querySelector("button[data-x='"+item.x+"'][data-y='"+item.y+"']").style.backgroundColor = color;
-        });
-    }
-
-
-    function addShip(shipPositionObject) {
-        if(shipPositionObject.correctlyPositionResponse){
-            var placeIsEmpty = this.positionIsEmpty((shipPositionObject.shipPositionElements));
-
-            if(placeIsEmpty){
-                shipPositionObject.shipPositionElements.forEach((function (item) {
-                    this.matrix[item.x - 1][item.y - 1] = 2;
-                    document.querySelector("button[data-x='"+item.x+"'][data-y='"+item.y+"']").classList.add('ship-placed');
-                    document.querySelector("button[data-x='"+item.x+"'][data-y='"+item.y+"']").style.backgroundColor = null;
-                }).bind(this));
-
-                --this.shipCount[shipPositionObject.shipPositionElements.length];
-                disableShipTypeButtons.call(this, shipPositionObject.shipPositionElements.length);
-            }
-        }
-    }
-    
-    function disableShipTypeButtons(currentShipSize) {
-        if(this.shipCount[currentShipSize] === 0){
-            document.querySelector("button[data-size='"+currentShipSize+"']").disabled = true;
-            for (var key in this.shipCount){
-                if(this.shipCount[key] !== 0){
-                    this.shipSize = +key;
-                }
-            }
-            if(currentShipSize === this.shipSize){
-                this.shipSize = 0;
-            }
-        }
-
-    }
-
-    battlefield.addEventListener('mouseover', (function (event) {
-        if(event.target.tagName.toUpperCase() === 'button'.toUpperCase()){
-            var shipPositionObject = getShipPosition.call(this, event);
-            showShipOnBattlefield(shipPositionObject);
-        }
-    }).bind(this));
-    battlefield.addEventListener('mouseout', selectShipPositionMouseOut.bind(this));
-    battlefield.addEventListener('click', (function (event) {
-        var shipPositionObject = getShipPosition.call(this, event);
-        addShip.call(this, shipPositionObject);
-
-    }).bind(this));
+    }).bind(this);
 }
 PlayerBattlefield.prototype = Object.create(Battlefield.prototype);

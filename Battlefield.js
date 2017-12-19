@@ -1,4 +1,4 @@
-function Battlefield() {
+function Battlefield(game) {
     // Состояния матрицы:
     // 0 - свободная ячейка,
     // 1 - свободная проверенная ячейка - промах,
@@ -250,6 +250,26 @@ Battlefield.prototype.addShip = function(shipSize) {
     }
 }
 
-Battlefield.computerStart = false;
-Battlefield.computerShipsCount = 10;
-Battlefield.playerShipsCount = 10;
+// Battlefield.prototype.checkEndOfGame = function () {
+//     if(Battlefield.computerShipsCount === 0 || Battlefield.playerShipsCount === 0){
+//         var winPanel = document.querySelector('#win-panel');
+//         winPanel.querySelector('button').onclick = function () {
+//             winPanel.style.display = 'none';
+//             document.querySelector("#start-menu").style.display = 'flex';
+//         };
+//         winPanel.style.display = 'flex';
+//         if(Battlefield.computerShipsCount === 0){
+//             Battlefield.computerStart = false;
+//             winPanel.querySelector('h2').innerHTML = Battlefield.playerName + ' win.'
+//         }
+//         else {
+//             Battlefield.computerStart = false;
+//             winPanel.querySelector('h2').innerHTML = Battlefield.playerName = 'Computer win.'
+//         }
+//     }
+// }
+//
+// Battlefield.computerStart = false;
+// Battlefield.computerShipsCount = 10;
+// Battlefield.playerShipsCount = 10;
+// Battlefield.playerName = 'John';
